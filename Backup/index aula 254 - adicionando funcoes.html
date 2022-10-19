@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{somar() }} <br>
+        {{ subtrair() }} <br>
+        {{ multiplicar() }} <br>
+        {{ dividir() }} <br>
+        {{ numeroAleatorio() }} <br>
+    </div>
+        
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {},
+            methods: {
+                
+                somar: function somar(){ //sintaxe convencional
+                    return 4 + 2;
+                },
+                
+                subtrair: function() { // sintaxe de função anonima
+                    return 4 - 2;
+                },
+
+                //sintaxe usando arrow function
+                multiplicar: () => {
+                    return 4 * 2;
+                },
+
+                //sintaxe enxuta
+                // Esse é o mesmo caso da sintaxe convencional. Ou seja o 
+                // interpretador entende que esta sendo criada uma funcao cuja chave
+                // é dividir
+                dividir() { 
+                    return 4/2;
+                },
+                numeroAleatorio: function numeroAleatorio(){
+                    return Math.random();
+                }
+
+            }
+        })
+
+        console.log(vm);
+
+    </script>
+</body>
+</html>

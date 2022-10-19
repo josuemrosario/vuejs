@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ mensagem }} <br>
+        Valor total: {{valorTotal}} <br>
+        Logado: {{logado}}  <br>
+        Hobbies : {{ hobbies}} <br>
+        Primeiro Hobbiee : {{ hobbies[0]}} <br>
+        Perfil : {{ perfil }} <br>
+        Perfil (site) : {{ perfil.site }} <br>
+        Perfil (cursos) : {{ perfil.cursos }} <br>
+        Perfil (primeiro) : {{ perfil.cursos[0] }} <br>
+        Perfil (primeiro nome) : {{ perfil.cursos[0].nome }} <br>
+
+    </div>
+        
+    <script>
+        
+        /* Opção 1 : criando um objeto Vue
+        options = {
+            el: '#app', // o # seleciona por id e . (ponto) seleciona por class
+            data: { // Guarda variaveis ou atributos reativos
+                mensagem: "primeiro template controlado pelo Vue"
+            }
+        }
+        const vm = new Vue(options); //vm é o mesmo que viewmodel
+
+        */
+
+        // Opção 2 : passando direto na instancia
+
+        new Vue({
+            el: '#app', 
+            data: { 
+                mensagem: "primeiro template controlado pelo Vue",
+                valorTotal:150.47,
+                logado: false,
+                hobbies: [ //notacao para definir arrays
+                    'Dormir',
+                    'Colecionar Video Games Antigos',
+                    'Correr',
+                    'Trilhas'
+                ],
+                perfil:{  //notacao para definir objetos
+                    nome:'josue rosario',
+                    site:'josue@teste.com.br',
+                    idade:43,
+                    cursos: [
+                        {nome: 'Laravel', cargahoraria: '50 horas' },
+                        {nome: 'Banco Relacionais', cargahoraria: '40 horas' },
+                    ]
+                }
+
+                
+            }
+        })
+
+        console.log(vm);
+
+    </script>
+</body>
+</html>

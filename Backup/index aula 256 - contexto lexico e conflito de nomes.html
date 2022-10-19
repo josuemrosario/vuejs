@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{somar() }} <br>
+        {{ subtrair() }} <br>
+        {{ multiplicar() }} <br>
+        {{ dividir() }} <br>
+    </div>
+        
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {
+                n1: 10,
+                n2: 5,
+                nomeigualmetodo: 'teste'
+            },
+            methods: {
+                
+                somar: function somar(){ 
+                    return this.n1 + this.n2;
+                },
+                
+                subtrair: function() { 
+                    return this.n1 - this.n2;
+                },
+
+
+                // Retorna NaN por causa do contexto lexico
+                // this.xxx nao funciona aqui
+                multiplicar: () => {
+                    console.log('Dentro de uma arrow function');
+                    console.log(this);
+                    return this.n1 * this.n2;
+                },
+
+
+                dividir() {  
+                    console.log('Dentro de uma funcao comum');
+                    console.log(this)
+
+                    console.log('Arrow function dentro dividir');
+                    let f =() => {
+                        console.log('****************',this);
+                        return 'teste - retorno da arrow'
+                    }
+
+                    console.log(f());
+
+
+                    return this.n1 / this.n2;
+                },
+
+                nomeigualmetodo(){ // da erro porque tem um nome iqual ao de um atributo
+                    return false;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
