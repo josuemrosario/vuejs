@@ -1,0 +1,14 @@
+GITHUB
+=========
+
+Clonar o repositório
+git clone https://github.com/josuemrosario/vuejs
+
+Adicionar arquivos ao commit
+git add .
+
+Commitar
+git commit -m "Mensagem de exemplo"
+
+Enviar para o repositório online
+git push -u origin main
