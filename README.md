@@ -4,7 +4,7 @@ Repository created just for learning VueJs
 
 # Technologies/softwares
 
-vue.js
+vue.js <br>
 vsCode with extensions Vetur and Live Server
  
 # Important Links
