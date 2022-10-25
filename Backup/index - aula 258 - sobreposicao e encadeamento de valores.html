@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+    <style>
+        .verde{
+            color:green;
+        }
+
+        .negrito{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Apenas usar dois pontos é o mesmo que usar v-bind (sintaxe exuta) -->
+        <!-- Sobreposição : quando uma mesma propriedade é definida 2 vezes direita sobrepoe o que esta a esquerda ex: 2 hrefs-->
+        <!-- Encadeamento : quando um atributo é definido com valores diferentes os valores se agrupam  ex: dois atributos class com classes diferentes-->
+        <a :href="site" href="www.google.com.br"> Site </a>
+        <p :class="cor" class="negrito">Entendendo a diretiva v-bind</p>
+        <input type="text" :placeholder="comopreencher" :value="valorpadrao">
+        <input type="checkbox" :checked="check">
+    </div>
+        
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {
+                site:'https://google.com.br',
+                cor:'verde',
+                comopreencher: 'Placeholder - diretiva de bind ',
+                valorpadrao:'entendendo a diretiva de bind',
+                check: true
+            },
+            methods: {
+
+            }
+        })
+
+    </script>
+</body>
+</html>
