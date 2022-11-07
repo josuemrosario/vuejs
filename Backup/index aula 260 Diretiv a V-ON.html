@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+    <style>
+        .verde{
+            background-color:green;
+        }
+
+        .azul{
+            background-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:keyup="imprimirTexto()">
+        <button v-on:click="mensagemAlerta()"> Botao</button>
+        <button @click="mensagemAlerta()"> Botao com sintaxe sugar</button>
+ 
+    </div>            
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {},
+            methods: {
+                imprimirTexto() {
+                    console.log('teste')
+                },
+                mensagemAlerta(){
+                    alert('Mensagem de alerta')
+                }
+
+            }
+        })
+
+    </script>
+</body>
+</html>

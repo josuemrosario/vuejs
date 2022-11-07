@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+    <style>
+        .branco{
+            background-color:white;
+        }
+        .verde{
+            background-color:green;
+        }
+
+        .azul{
+            background-color: blue;
+        }
+        .vermelho{
+            background-color:red;
+        }
+        .borda{
+            border:1px solid ;
+        }
+        .div-principal{
+            width: 200px;
+            height: 200px;
+        }
+        .div-comum{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a  href="http://google.com.br" 
+            target="_blank"
+            v-on:click="prevenirComportamentoPadrao($event)">
+            LINK - prevenindo comportamento padrao maneira 1
+        </a>
+        <br>
+        <a  href="http://google.com.br" 
+            target="_blank"
+            v-on:click.prevent="prevenirComportamentoPadrao($event)">
+            LINK - prevenindo comportamento padrao maneira 2
+        </a>
+        <br>      
+        Mensagem: {{ msg}}
+        <button @click="executarUmaVez()">Clque aqui</button>
+        <p>Cliques sem operador once: {{ cliques }}</p>
+        <button @click.once="executarUmaVezOnce()">Clque aqui</button>
+        <p>Cliques com operador once: {{ cliquesonce }}</p>
+        <form @submit.prevent.once="prevenirUmaVez()">
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Formulario: {{ formulario }}</p>
+        <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
+        <p>Teclas: {{ teclas }}</p>
+        
+    </div>         
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {
+                msg: '',
+                cliques: 0,
+                cliquesonce: 0,
+                formulario: '',
+                teclas:''
+
+            },
+            methods: {
+                prevenirComportamentoPadrao(evento){
+                    evento.preventDefault()
+                    this.msg = 'Comportamento Padrão desativado'
+
+                },
+                executarUmaVez(){
+                    this.cliques++
+                },
+                executarUmaVezOnce(){
+                    this.cliquesonce++
+                },
+                prevenirUmaVez(){
+                    this.formulario = 'Prevenindo o comportamento padrão'
+                },
+                capturandoTeclas(evento){
+                    this.teclas = evento.key
+                },
+            }
+        })
+
+    </script>
+</body>
+</html>
