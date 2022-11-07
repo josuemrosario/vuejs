@@ -17,32 +17,51 @@
 </head>
 <body>
     <div id="app">
-         <input type="text" id="inputTexto">
-         <button @click="selecionarElementoFilho()">Botão</button>
-         <br>
-         <select  id="opcoes">
-            <option value="A">Opção 1</options>
-            <option value="B">Opção 2</options>
-            <option value="C">Opção 3</options>
-         </select>
-         <br>
-         <p id="paragrafo" style="color:green"> Paragrafo</p>
-         <div id="bloco">Conteúdo interno da div</div>
-         <button @click="selecionarElementoFilho()">Botão</button>
+
+        <!-- V-if Simples -->
+        <button @click="exibirSaldo = !exibirSaldo">
+            <span v-if="!exibirSaldo"> Exibir saldo </span>
+            <span v-if="exibirSaldo"> Ocultar saldo </span>
+        </button>
+        <p>Saldo: <span v-if="exibirSaldo">R$ {{ saldo }}</span></p>
+        <hr>
+
+        <!-- V-if Simples -->
+        Idade: <input type="text" id="inputIdade" @blur="setIdade()">    
+        <p v-if="idade < 18 "> Menor de idade </p>
+        <p v-else> Maior de Idade</p>
+
+
+        <!-- v-if velse-if  e v-else-->
+        <hr>
+        Nota: <input type="text" id="inputNota" @blur="setNota()">
+        <p v-if="nota == ''"> Digite a nota do aluno</p>
+        <p v-else-if="nota >= 7 && nota <=10"> Aluno Aprovado</p>
+        <p v-else-if="nota >= 5 && nota <7"> Aluno em recuperacao</p>
+        <p v-else-if="nota>=0 && nota <5">Aluno Reprovado</p>
+        <p v-else>Nota informada é inválida</p>
+
     </div>         
     <script>
 
         new Vue({
             el: '#app', 
             data: {
+                saldo: 4570.17,
+                exibirSaldo: false,
+                idade: 0,
+                nota: 0
             },
             methods: {
-                selecionarElementoFilho(){
-                    //console.log(inputTexto.value)
-                    //console.log(opcoes.value)
-                    //console.log(paragrafo.style.color)
-                    console.log(bloco.innerHTML)
+                setIdade(){
+                    this.idade = inputIdade.value
+
+                },
+                setNota(){
+                    this.nota = inputNota.value
+                    console.log(this.nota)
                 }
+                
             }
         })
 
