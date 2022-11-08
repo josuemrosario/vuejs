@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Vue baixando o framework-->
+    <script src="./vue.js"></script>
+
+    <!-- Vue usando CDN-->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h4>Adicionar Pacientes</h4>
+       <span>Nome:</span><input type="text" id="inputNome" ><br>
+       <span>Idade:</span><input type="text" id="inputIdade" ><br>
+       <span>Plano:</span><input type="text" id="inputPlano" ><br>
+       <button @click="adicionarPaciente()">Adicionar</button>
+       <hr>   
+
+       <h4>Ultimo paciente cadastrado</h4>
+
+       <p v-if="pacientes.length > 0">
+            Paciente {{pacientes[pacientes.length -1].nome}} <br>
+            Idade {{pacientes[pacientes.length -1].idade}} <br>
+            Plano {{pacientes[pacientes.length -1].plano}} <br>
+        </p>
+        
+        <hr>
+
+        <h4>pacientes do plano ouro</h4>
+
+        <p v-for="p in pacientes"> {{ p.plano == 'ouro' ? p.nome : ''}}</p>
+
+
+        <h4>Pacientes Cadastrados</h4>
+        <p v-for="p in pacientes">{{p.nome}}</p>
+
+        
+       
+       
+
+    </div>         
+    <script>
+
+        new Vue({
+            el: '#app', 
+            data: {
+                pacientes:[]
+            },
+            methods: {
+                adicionarPaciente(){
+                    this.pacientes.push({
+                            nome: inputNome.value,
+                            idade: inputIdade.value,
+                            plano: inputPlano.value
+                        })
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
